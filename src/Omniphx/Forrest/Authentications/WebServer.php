@@ -116,7 +116,7 @@ class WebServer extends Client implements WebServerInterface
 
         // Encypt token and store token and in session.
         $this->session->putToken($jsonResponse);
-        $this->session->putRefreshToken($jsonResponse['refresh_token']);
+        $this->session->putRefreshToken(@$jsonResponse['refresh_token']);
 
         // Store resources into the session.
         $this->storeResources();
