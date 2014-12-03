@@ -113,6 +113,8 @@ class WebServer extends Client implements WebServerInterface
 
         // Response returns an json of access_token, instance_url, id, issued_at, and signature.
         $jsonResponse = $response->json();
+        \Session::put('access_token', $jsonResponse['access_token']);
+        \Session::put('instance_url', $jsonResponse['instance_url']);
 
         // Encypt token and store token and in session.
         $this->session->putToken($jsonResponse);
